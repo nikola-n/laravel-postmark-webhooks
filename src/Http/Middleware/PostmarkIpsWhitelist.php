@@ -3,6 +3,7 @@
 namespace Mvdnbrk\PostmarkWebhooks\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Log;
 
 class PostmarkIpsWhitelist
 {
@@ -30,10 +31,12 @@ class PostmarkIpsWhitelist
      */
     public function handle($request, Closure $next)
     {
-        if (collect($this->ips)->contains($request->getClientIp())) {
-            return $next($request);
-        }
 
-        return response()->json(['error' => 'Unauthorized'], 401);
+        Log::debug($request->getClientIp());
+//        if (collect($this->ips)->contains($request->getClientIp())) {
+//            return $next($request);
+//        }
+//
+//        return response()->json(['error' => 'Unauthorized'], 401);
     }
 }
