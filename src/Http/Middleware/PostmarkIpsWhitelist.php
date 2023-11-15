@@ -34,7 +34,7 @@ class PostmarkIpsWhitelist
 
         Log::debug($request->getClientIp());
 //        if (collect($this->ips)->contains($request->getClientIp())) {
-//            return $next($request);
+            return $next($request);
 //        }
 //
 //        return response()->json(['error' => 'Unauthorized'], 401);
